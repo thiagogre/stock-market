@@ -1,0 +1,5 @@
+alpha_vantage
+openpyxl
+matplotlib
+numpy
+pandas
