@@ -46,7 +46,7 @@ print(
     f'Average 100 PRICES LAST WEEK -> HIGH: {last_week_100_high_prices_average_round}, LOW: {last_week_100_low_prices_average_round}')
 
 data_last_day = data_intraday.loc[data_intraday.index >=
-                                  f'2020-{last_month[4]}-{last_month[5]} 00:00:00']
+                                  f'{last_month[3]}-{last_month[4]}-{last_month[5]} 00:00:00']
 
 data_last_day_high = np.array(data_last_day['2. high'])
 data_last_day_low = np.array(data_last_day['3. low'])
