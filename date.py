@@ -8,8 +8,6 @@ def last_month(year, month):
     return last_days
 
 
-# print(last_month(2020, 10))
-
 def last_day_of_last_month():
     today = date.today()
     today_str = str(today).split('-')
@@ -31,6 +29,3 @@ def last_day_of_last_month():
         yesterday = '0' + str(yesterday)
 
     return l_day, l_month, range_days, year, month, yesterday
-
-
-print(last_day_of_last_month())
