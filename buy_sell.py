@@ -1,15 +1,11 @@
 from alpha_vantage.timeseries import TimeSeries
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from datetime import date
-
+from graphics import graphic_last_month
+from date import last_day_of_last_month
 
 # 5 calls/min and 500 calls/day
 api_key = 'GMIFJYYVMLZTZVHA'
-
-today = date.today()
-print("Today's date:", today)
 
 ts = TimeSeries(key=api_key, output_format='pandas')
 
@@ -17,60 +13,53 @@ symbol = input(str(
     'What symbol you desire search?\n"MSFT, AAPL, AMZN, GOOG, FB, INTC, CSCO, CMCSA, PEP, ADBE, NVDA, NFLX"\nType: '))
 symbol = symbol.upper()
 
-# LAST MONTH INTRADAY
+# LAST WEEK INTRADAY
 data_intraday, meta_data_intraday = ts.get_intraday(
     symbol=f'{symbol}', interval='1min', outputsize='full')
 
-data_last_month = data_intraday.loc[data_intraday.index >=
-                                    '2020-09-01 00:00:00']
-np_last_month = np.array(data_last_month)
+last_month = last_day_of_last_month()
 
-last_month_low_prices = np.sort(np_last_month[:, 2])
-last_month_100_low_prices = last_month_low_prices[0:100]
-last_month_100_low_prices_average = np.mean(last_month_100_low_prices)
-last_month_100_low_prices_average_round = round(
-    last_month_100_low_prices_average, 2)
-pd.DataFrame({'Low Price': last_month_100_low_prices}).to_excel('low-100.xlsx')
-plt.plot(last_month_100_low_prices, color='red')
-plt.title('Low Price Variation')
-plt.ylabel('Price')
-plt.xlabel('Amount of Prices')
-plt.xlim(left=0)
-plt.show()
+data_last_week = data_intraday.loc[data_intraday.index >=
+                                   f'{last_month[3]}-{last_month[1]}-{last_month[2]} 00:00:00']
 
-last_month_high_prices = np.sort(np_last_month[:, 1])
-last_month_high_prices_reverse = last_month_high_prices[::-1]
-last_month_100_high_prices = last_month_high_prices_reverse[0:100]
-last_month_100_high_prices_average = np.mean(last_month_100_high_prices)
-last_month_100_high_prices_average_round = round(
-    last_month_100_high_prices_average, 2)
-pd.DataFrame({'High Price': last_month_100_high_prices}
+np_last_week = np.array(data_last_week)
+
+last_week_low_prices = np.sort(np_last_week[:, 2])
+last_week_100_low_prices = last_week_low_prices[0:100]
+last_week_100_low_prices_average = np.mean(last_week_100_low_prices)
+last_week_100_low_prices_average_round = round(
+    last_week_100_low_prices_average, 2)
+pd.DataFrame({'Low Price': last_week_100_low_prices}).to_excel('low-100.xlsx')
+graphic_last_month(last_week_100_low_prices, 'Low')
+
+last_week_high_prices = np.sort(np_last_week[:, 1])
+last_week_high_prices_reverse = last_week_high_prices[::-1]
+last_week_100_high_prices = last_week_high_prices_reverse[0:100]
+last_week_100_high_prices_average = np.mean(last_week_100_high_prices)
+last_week_100_high_prices_average_round = round(
+    last_week_100_high_prices_average, 2)
+pd.DataFrame({'High Price': last_week_100_high_prices}
              ).to_excel('high-100.xlsx')
-plt.plot(last_month_100_high_prices, color='green')
-plt.title('High Price Variation')
-plt.ylabel('Price')
-plt.xlabel('Amount of Prices')
-plt.xlim(left=0)
-plt.show()
+graphic_last_month(last_week_100_high_prices, 'High')
 
 print(
-    f'Average 100 PRICES LAST MONTH -> HIGH: {last_month_100_high_prices_average_round}, LOW: {last_month_100_low_prices_average_round}')
+    f'Average 100 PRICES LAST WEEK -> HIGH: {last_week_100_high_prices_average_round}, LOW: {last_week_100_low_prices_average_round}')
 
-data_intraday_month = data_intraday.loc[data_intraday.index >=
-                                        '2020-09-29 00:00:00']
+data_last_day = data_intraday.loc[data_intraday.index >=
+                                  f'2020-{last_month[4]}-{last_month[5]} 00:00:00']
 
-data_intraday_month_high = np.array(data_intraday_month['2. high'])
-data_intraday_month_low = np.array(data_intraday_month['3. low'])
+data_last_day_high = np.array(data_last_day['2. high'])
+data_last_day_low = np.array(data_last_day['3. low'])
 
 buy = []
 sell = []
 
-for price in (list(data_intraday_month_high)):
-    if price > last_month_100_high_prices_average_round:
+for price in (list(data_last_day_high)):
+    if price > last_week_100_high_prices_average_round:
         sell.append(price)
 
-for price in (list(data_intraday_month_low)):
-    if price < last_month_100_low_prices_average_round:
+for price in (list(data_last_day_low)):
+    if price < last_week_100_low_prices_average_round:
         buy.append(price)
 
 print(f'BOUGHT: {buy}, SELL: {sell}')
