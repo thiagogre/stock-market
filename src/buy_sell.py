@@ -29,8 +29,8 @@ last_week_100_low_prices = last_week_low_prices[0:100]
 last_week_100_low_prices_average = np.mean(last_week_100_low_prices)
 last_week_100_low_prices_average_round = round(
     last_week_100_low_prices_average, 2)
-pd.DataFrame({'Low Price': last_week_100_low_prices}
-             ).to_excel('excel_files/low-100.xlsx')
+# pd.DataFrame({'Low Price': last_week_100_low_prices}
+#              ).to_excel('excel_files/low-100.xlsx')
 graphic_last_month(last_week_100_low_prices, 'Low')
 
 last_week_high_prices = np.sort(np_last_week[:, 1])
@@ -39,12 +39,14 @@ last_week_100_high_prices = last_week_high_prices_reverse[0:100]
 last_week_100_high_prices_average = np.mean(last_week_100_high_prices)
 last_week_100_high_prices_average_round = round(
     last_week_100_high_prices_average, 2)
-pd.DataFrame({'High Price': last_week_100_high_prices}
-             ).to_excel('excel_files/high.xlsx')
+# pd.DataFrame({'High Price': last_week_100_high_prices}
+#              ).to_excel('excel_files/high.xlsx')
 graphic_last_month(last_week_100_high_prices, 'High')
 
+print()
 print(
     f'Average 100 PRICES LAST WEEK -> HIGH: {last_week_100_high_prices_average_round}, LOW: {last_week_100_low_prices_average_round}')
+print()
 
 data_last_day = data_intraday.loc[data_intraday.index >=
                                   f'{last_month[3]}-{last_month[4]}-{last_month[5]} 00:00:00']
@@ -63,4 +65,4 @@ for price in (list(data_last_day_low)):
     if price < last_week_100_low_prices_average_round:
         buy.append(price)
 
-print(f'BOUGHT: {buy}, SELL: {sell}')
+print(f'BOUGHT: {buy}\nSELL: {sell}')
