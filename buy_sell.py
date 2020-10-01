@@ -1,8 +1,8 @@
 from alpha_vantage.timeseries import TimeSeries
 import numpy as np
 import pandas as pd
-from graphics import graphic_last_month
-from date import last_day_of_last_month
+from utils.graphics import graphic_last_month
+from utils.date import last_day_of_last_month
 
 # 5 calls/min and 500 calls/day
 api_key = 'GMIFJYYVMLZTZVHA'
