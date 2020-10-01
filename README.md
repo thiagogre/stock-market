@@ -23,7 +23,6 @@
 <h3 align="center"> 
 	🚀 Stock Market Analysis Yesterday 🚀
 </h3>
-</br>
 <h4 align="center">
 	  <img alt="edit" title="#stock-market" src="./assets/stock-market.gif" style="max-width: 100%;">
 </h4>
