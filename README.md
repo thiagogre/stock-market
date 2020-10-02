@@ -44,7 +44,7 @@
 
 ## 💻 About the project 
 
-This project in Python realize analyse of Nasdaq Stock Market. Using a sampling of data from the lowest and highest prices of the last week to verify the moments of buying and selling. Besides showing company overview.
+This project performs analysis of the Nasdaq stock market. Using a sampling of data from the lowest and highest prices of the last week to verify the moments of buying and selling. Besides showing company overview.
 Consuming [alphavantage](https://www.alphavantage.co/) API data.
 
 ---
