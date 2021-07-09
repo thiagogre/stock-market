@@ -11,22 +11,15 @@
   </a>
 
   <a href="https://www.linkedin.com/in/thiagogre/">
-    <img alt="Built by Tiago" src="https://img.shields.io/badge/built%20by-Thiago-%237519C1">
+    <img alt="Built by Thiago" src="https://img.shields.io/badge/built%20by-Thiago-%237519C1">
   </a>
 </p>
-
-<p align="center">
-  <img align="center" alt="with_love" src="https://forthebadge.com/images/badges/built-with-love.svg" />
-  <img align="center" alt="py" src="https://forthebadge.com/images/badges/made-with-python.svg" />
-<p>
-</br>	
 <h3 align="center"> 
 	🚀 Stock Market Analysis Yesterday 🚀
 </h3>
 <h4 align="center">
 	  <img alt="edit" title="#stock-market" src="./assets/stock-market.gif" style="max-width: 100%;">
 </h4>
-</br>
 </br>
 
 <h2 align="center"> 
@@ -95,16 +88,6 @@ The following tools were used in the construction of the project:
 -   **[matplotlib](https://matplotlib.org/)**
 -   **[alpha_vantage](https://www.alphavantage.co/documentation)**
 -   **[calendar](https://docs.python.org/3/library/calendar.html)**
-
----
-
-## 🦸 Author
-
-
- <img style="border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/66977846?s=460&u=c7422aab339b77062de914b222b3eca6fc6b70a8&v=4" width="100px;" alt="Thiago Gregorio"/>
- <br />
- <sub><b>Thiago</b></sub>
- <br />
 
 ---
 
